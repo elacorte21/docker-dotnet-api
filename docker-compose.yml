@@ -1,6 +1,6 @@
 services:
   web_api:
-    container_name: perons_api_app
+    container_name: persons_api_app
     build: .
     ports:
       - 4000:4000
@@ -16,6 +16,8 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
       interval: 5s
